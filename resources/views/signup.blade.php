@@ -32,11 +32,11 @@
                     </tr>
                     <tr>
                         <td><label for="password1">Password<span style="color:#ff7900"> *</span>：</label></td>
-                        <td><input type="text" id="password1" name="password1" /></td>
+                        <td><input type="password" id="password1" name="password1" /></td>
                     </tr>
                     <tr>
                         <td><label for="password2">Retype Password<span style="color:#ff7900"> *</span>：</label></td>
-                        <td><input type="text" id="password2" name="password2" /></td>
+                        <td><input type="password" id="password2" name="password2" /></td>
                     </tr>
                     <tr>
                         <td><label for="uemail">Email:</label></td>

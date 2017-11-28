@@ -27,7 +27,7 @@
                     </tr>
                     <tr>
                         <td><label for="password">Password<span style="color:#ff7900"> *</span>：</label></td>
-                        <td><input type="text" id="password" name="password" /></td>
+                        <td><input type="password" id="password" name="password" /></td>
                     </tr>
                     
                     <tr>
