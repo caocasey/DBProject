@@ -30,7 +30,7 @@ class UsersController extends Controller
 		$city = $users->input('city');
 		$zip = $users->input('zip');
 	
-		if($uname == '' || $urname == '' || $upassword  == '')
+		if($uname == '' || $urname == '' || $upassword  == '' || $uemail  == '' || $country  == '' || $state  == '' || $city  == '')
 			return view('signup');
 
 		//session
@@ -40,7 +40,8 @@ class UsersController extends Controller
 		if(!empty($uname1))
 			return view('exist');
 		else{
-			DB::insert('insert into users(uname,urname,upassword, usex, uemail, dbirth, country, state, city, zip, uphone) values (?,?,?,?,?,?,?,?,?,?,?)',[$uname,$urname,$upassword,$usex,$uemail,$dbirth,$uphone,$country,$state,$city,$zip ]);
+			$encryptPassword = md5($upassword);
+			DB::insert('insert into users(uname,urname,upassword, usex, uemail, dbirth, country, state, city, zip, uphone) values (?,?,?,?,?,?,?,?,?,?,?)',[$uname,$urname,$encryptPassword,$usex,$uemail,$dbirth,$country,$state,$city,$zip,$uphone]);
 			return view('welcome');
 		}
 		
@@ -51,7 +52,7 @@ class UsersController extends Controller
 	
 		$uname = $users->input('uname');
 		$password = $users->input('password');
-
+		$encryptPassword = md5($password);
 		if($uname == '' || $password  == '')
 			return view('login');
 
@@ -60,12 +61,12 @@ class UsersController extends Controller
 		//user name not exist or password not correct
 		if(empty($noUser))
 			return "User does not exsist";
-		$noPassword = DB::select('select uname from users where uname = ? and upassword = ?',[$uname, $password]);
+		$noPassword = DB::select('select uname from users where uname = ? and upassword = ?',[$uname, $encryptPassword]);
 		if(empty($noPassword))
 			return "Password not correct";
 
 
-		$uname = DB::select('select uname from users where uname = ? and upassword = ?',[$uname, $password]);
+		$uname = DB::select('select uname from users where uname = ? and upassword = ?',[$uname, $encryptPassword]);
 		Session::put('uname', $uname[0]->uname);
 
 		return redirect('.');

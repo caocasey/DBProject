@@ -39,8 +39,8 @@
                         <td><input type="password" id="password2" name="password2" /></td>
                     </tr>
                     <tr>
-                        <td><label for="uemail">Email:</label></td>
-                        <td><input type="utext" id="email" name="uemail" /></td>
+                        <td><label for="uemail">Email<span style="color:#ff7900"> *</span>：</label></td>
+                        <td><input type="utext" id="uemail" name="uemail" /></td>
                     </tr>
                     <tr>
                         <td><label for="usex">Sex:</label></td>
@@ -51,15 +51,15 @@
                         <td class="dbirth"><input type="date" id="dbirth" name="dbirth" value=""/></td>
                     </tr>
                     <tr>
-                        <td><label for="country">Country: </label></td>
+                        <td><label for="country">Country<span style="color:#ff7900"> *</span>：</label></td>
                         <td><input type="text" id="country" name="country" /></td>
                     </tr>
                     <tr>
-                        <td><label for="state">State:</label></td>
+                        <td><label for="state">State<span style="color:#ff7900"> *</span>：</label></td>
                         <td><input type="text" id="state" name="state" /></td>
                     </tr>
                     <tr>
-                        <td><label for="City">City:</label></td>
+                        <td><label for="city">City<span style="color:#ff7900"> *</span>：</label></td>
                         <td><input type="text" id="city" name="city" /></td>
                     </tr>
                     <tr>
