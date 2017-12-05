@@ -9,6 +9,18 @@ use Illuminate\Support\Facades\Session;
 */
 class ArtistController extends Controller
 {
+	//Get selected artist information
+	public function info($aid){
+		
+		$lists = DB::select('Select aid, aname, atype, adescription from artist where aid = ?',[$aid]);
+		$aname = $lists[0]->aname; 
+		
+		//get all the album list by select artist
+		$albumlists = DB::select('Select alid from track where artistname = ?',[$aname]);
+		return view('artist',compact('lists', 'albumlists'));		
+	}
+
+
 	//For each artist, list their ID, name, and how many times their tracks have been played by users
 	public function list(){
 		$lists = DB::select('Select a.aid, a.aname, count(distinct ptime) From artist a left join track t on a.aid = t.aid left join playrecord pl on pl.tid = t.tid Group by a.aid, a.aname');

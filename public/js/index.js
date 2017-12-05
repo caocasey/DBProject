@@ -7,6 +7,7 @@ $(document).ready(function(){
 			$("#signup").hide();
 			$("#login").hide();
 			$("#logout").show();
+			$("#account").show();
 		}
 
 });

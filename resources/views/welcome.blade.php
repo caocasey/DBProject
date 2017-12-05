@@ -27,8 +27,17 @@
         <div id="logout">
             <a href="{{ url('users/logout') }}">Logout</a>
         </div>
+         <div id="account">
+            <a href="{{ url('users/account') }}">Account</a>
+        </div>
 
        <div>Welcome <span id="uname">{{Session::get('uname')}}</span></p><div>
+        
+     
+                        
 
     </body>
+    <footer>
+        @include('includes.footer')
+    </footer>
 </html>

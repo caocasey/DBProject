@@ -14,6 +14,7 @@ class UsersController extends Controller
 	
 	public function signup(Request $users){
 		
+
 		//Create a record for a new user account, with a name, a login name, and a password.
 		//get information from html form 
 		$uname = $users->input('uname');
@@ -120,6 +121,15 @@ class UsersController extends Controller
 
 		dd($findPlaylist);
 		//return view('',compact('findPlaylist'));		
+	}
+
+	public function info(){
+
+		$uname =  Session::get('uname');
+		$lists = DB::select('Select * from users where uname = ?',[$uname]);
+	
+		return view('account',compact('lists'));		
+
 	}
 
 	
