@@ -36,6 +36,26 @@ class TrackController extends Controller
 		return view('search',compact('seachTop','searchTrack','searchArtist','searchAlbum'));		
 	}
 
+	//calcuate the sum of tracks, playlists and album
+	public function numbers(){
+		
+		$tk = DB::select("select count(tid) as ct from track");
+		$pl = DB::select("select count(pid) as ct from playlist");
+		$al = DB::select("select count(alid) as ct from album");
+
+		$data = array(
+            'trackNumber'=> $tk[0]->ct,
+            'plNumber'=>$pl[0]->ct,
+            'albumNumber'=>$al[0]->ct
+            );
+        return view('welcome')->with($data);
+
+		//$trackNumber = DB::select("select count(tid) as ct from track");
+		//$trackNumber1 = $trackNumber[0]->ct;
+		//return view('welcome', compact($trackNumber1));
+	}
+
+
 }
 
 

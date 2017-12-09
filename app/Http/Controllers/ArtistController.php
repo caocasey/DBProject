@@ -17,7 +17,11 @@ class ArtistController extends Controller
 		
 		//get all the album list by select artist
 		$albumlists = DB::select('Select alid from track where artistname = ?',[$aname]);
-		return view('artist',compact('lists', 'albumlists'));		
+
+
+		return view('artist',compact('lists', 'albumlists'));	
+
+
 	}
 
 

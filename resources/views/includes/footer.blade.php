@@ -1,6 +1,5 @@
  <footer>
-        <div style="background-color:black; height:10%; width:100%;
-  margin-top: 1000px;">
+        <div style="background-color:#222; height:10%; width:100%; margin-top: 1000px;">
             <p style="color:white;">About</p>
             <p style="color:white;">Author: Cao Yingxi and Fang Jingyun</p>
             <p style="color:white;">© 2017 DB project</p>
@@ -17,6 +16,8 @@
             <div class="fb-share-button" data-href="http://www.DBProject.com/public/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8888%2FDBProject%2Fpublic%2F&amp;src=sdkpreparse">Share to Facebook</a></div>
 
             <!--twitter share-->
-            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <div style=" margin-top: 10px;">
+              <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
         </div>
 </footer>

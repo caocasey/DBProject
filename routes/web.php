@@ -15,11 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//artist related routers
 Route::any('artist/info/{aid}', 'ArtistController@info');
 Route::get('artist/lists', 'ArtistController@list');
 Route::get('artist/lists_with_genre', 'ArtistController@listWithGenre');
 Route::get('artist/common_funs', 'ArtistController@commonFuns');
 
+//user related routers
 Route::any('users/account', 'UsersController@info');
 Route::any('users/signup', function () {
     return view('signup');
@@ -34,10 +36,12 @@ Route::any('users/logout', 'UsersController@logout');
 
 Route::any('users/rate', 'UsersController@rate');
 Route::get('users/find_playlist', 'UsersController@findPlaylist');
+Route::any('users/likes', 'UsersController@likes');
+Route::any('users/follow', 'UsersController@follow');
 
-
+//track related router
 Route::any('search', 'TrackController@search');
-
+Route::get('/', 'TrackController@numbers');
 
 
 

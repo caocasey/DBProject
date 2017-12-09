@@ -123,6 +123,7 @@ class UsersController extends Controller
 		//return view('',compact('findPlaylist'));		
 	}
 
+	//list user information
 	public function info(){
 
 		$uname =  Session::get('uname');
@@ -131,6 +132,30 @@ class UsersController extends Controller
 		return view('account',compact('lists'));		
 
 	}
+
+	public function follow(){
+
+		//follow
+		$uname1 =  Session::get('uname');
+		$uname2 =  "test";
+		DB::insert('insert into follow(uname,followerName,ftime) values (?,?,?)',[$uname2,$uname1,now()]);
+		
+		//return view('',compact('followlist'));		
+	}
+
+	public function likes(){
+
+		//like
+		$uname =  Session::get('uname');
+		$aid = "1uNFoZAHBGtllmzznpCI3s";
+		DB::insert('insert into likes(uname,aid,ltime) values (?,?,?)',[$uname,$aid,now()]);	
+		//return view('',compact('followlist'));		
+
+	}
+	
+	
+
+
 
 	
 
