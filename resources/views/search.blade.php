@@ -19,6 +19,7 @@
                 width: 800px;
                 margin-left: 100px;
             }
+            
         </style>
         <link rel="stylesheet" href="{{ URL::asset('css/index.css')}}" />
         <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css')}}" />
@@ -79,16 +80,19 @@
                                                 <th>Button</th>
                                             </tr>
                                         </thead>
+                                        @foreach ($searchArtist as $a)
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>                                                
-                                                <td>Jay Chou</td>   
-                                                <td>Jazz</td>
-                                                <td>Good Singer</td>
+                                            <tr>  
+                                                <td>  </td>                             
+                                                <td>{{$a->aname}}</td>   
+                                                <td>{{$a->atype}}</td>
+                                                <td>{{$a->adescription}}</td>
                                                 <td>
-                                                <a href=".html"><i class="fa fa-fw fa-user-plus"></i></a></td>                                         
+                                                    <a href=".html"><i class="fa fa-fw fa-user-plus"></i></a>
+                                                </td>                                         
                                             </tr>
                                         </tbody>
+                                        @endforeach
                                     </table>
                                 </div>
                             </div>
@@ -100,35 +104,29 @@
                                         <thead>
                                             <tr>
                                                 <th> </th>                                                
-                                                <th>Track</th>                                                
+                                                <th>Track</th>                                       
                                                 <th>Artist</th>
                                                 <th>Genre</th>
                                                 <th>Time</th>
                                                 <th>Button</th>
                                             </tr>
                                         </thead>
+                                       
                                         <tbody>
+                                            @foreach ($searchTrack as $t)
                                             <tr>
-                                                <td>1</td>                                                
-                                                <td>Listen to Your Mom</td>                                                
-                                                <td>Jay Chou</td>
-                                                <td>Jazz</td>
-                                                <td>03:20</td>
+                                                <td>  </td>                                               
+                                                <td>{{ $t->ttitle }}</td>                               
+                                                <td>{{ $t->artistname }}</td>
+                                                <td>{{ $t->tgenre }}</td>
+                                                <td>{{ $t->duration }}</td>
                                                 <td><a href=".html"><i class="fa fa-fw fa-play"></i></a>
                                                 <a href=".html"><i class="fa fa-fw fa-heart"></i></a>
                                                 <a href=".html"><i class="fa fa-fw fa-user-times"></i></a></td>                                         
                                             </tr>
-                                            <tr>
-                                                <td>2</td>                                                
-                                                <td>Simple Love</td>                                                
-                                                <td>Jay Chou</td>
-                                                <td>Pop</td>
-                                                <td>04:02</td>
-                                                <td><a href=".html"><i class="fa fa-fw fa-play"></i></a>
-                                                <a href=".html"><i class="fa fa-fw fa-heart"></i></a>
-                                                <a href=".html"><i class="fa fa-fw fa-user-times"></i></a></td>                                         
-                                            </tr>
+                                            @endforeach
                                         </tbody>
+                                       
                                     </table>
                                 </div>
                             </div>
@@ -149,18 +147,22 @@
                                                 
                                             </tr>
                                         </thead>
+                                       
                                         <tbody>
+                                            @foreach ($searchPlaylist as $p)
                                             <tr>
-                                                <td>1</td>
-                                                <td>Gentle Song of Jay Chou</td>
-                                                <td>354</td>
-                                                <td>username1</td>
-                                                <td>2017-11-11 20:11:02</td>
+                                                <td>  </td>
+                                                <td>{{ $p->pname }}</td>
+                                                <td>XXX</td>
+                                                <td>{{ $t->uname }}</td>
+                                                <td>{{ $t->pldate }}</td>
                                                 <td><a href=".html"><i class="fa fa-fw fa-play"></i></a>
                                                 <a href=".html"><i class="fa fa-fw fa-heart"></i></a>
                                                 <a href=".html"><i class="fa fa-fw fa-user-times"></i></a></td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
+                                        
                                     </table>
                                 </div>
                             </div>
@@ -180,18 +182,22 @@
                                                 <th width="14%">Button</th>
                                             </tr>
                                         </thead>
+                                        
                                         <tbody>
+                                            @foreach ($searchAlbum as $al)
                                             <tr>
-                                                <td>1</td>
-                                                <td>Stil Fantasy</td>
-                                                <td>120000</td>
-                                                <td>Jay Chou</td>
-                                                <td>2017-11-11 20:11:02</td>
+                                                <td>  </td>
+                                                <td>{{ $al->altitle }}</td>
+                                                <td>XXX</td>
+                                                <td>XXX</td>
+                                                <td>{{ $al->aldate }}</td>
                                                 <td><a href=".html"><i class="fa fa-fw fa-play"></i></a>
                                                 <a href=".html"><i class="fa fa-fw fa-heart"></i></a>
                                                 <a href=".html"><i class="fa fa-fw fa-user-times"></i></a></td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
+                                        
                                     </table>
                                 </div>
                             </div>
