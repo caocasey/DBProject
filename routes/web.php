@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/index', function () {
+    return view('index');
+});
 
 //artist related routers
 Route::any('artist/info/{aid}', 'ArtistController@info');
@@ -32,7 +35,7 @@ Route::any('users/login', function () {
     return view('login');
 });
 Route::any('users/log_in', 'UsersController@login');
-Route::any('users/logout', 'UsersController@logout');
+Route::any('/logout', 'UsersController@logout');
 
 Route::any('users/rate', 'UsersController@rate');
 Route::get('users/find_playlist', 'UsersController@findPlaylist');
@@ -41,7 +44,7 @@ Route::any('users/follow', 'UsersController@follow');
 
 //track related router
 Route::any('search', 'TrackController@search');
-Route::get('/', 'TrackController@numbers');
+Route::get('index', 'TrackController@numbers');
 
 
 

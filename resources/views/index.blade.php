@@ -2,99 +2,133 @@
 <html lang="{{ app()->getLocale() }}">
     <head>
 
-        <title>Monster Music - Search</title>
-        
+        <title>Project</title>
 
 
         <!-- Styles -->
         <style>
-            #search{
-                height:46px;
-                width: 100px;
-                position: absolute;
-                left:0px;
-                z-index: 100;
-            }
-            #keyword{
-                width: 800px;
-                margin-left: 100px;
-            }
+
         </style>
+
         <link rel="stylesheet" href="{{ URL::asset('css/index.css')}}" />
         <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css')}}" />
         <!-- Custom CSS -->
         <link rel="stylesheet" href="{{ URL::asset('css/sb-admin.css')}}" />
         <!-- Morris Charts CSS -->
         <link rel="stylesheet" href="{{ URL::asset('css/plugins/morris.css')}}" />
-        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <!-- Custom Fonts -->
+        <link href="{{ URL::asset('font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
         <link href="https://use.fontawesome.com/releases/v5.0.0/css/all.css" rel="stylesheet">
+
         <!-- js -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript" src="{{URL::asset('js/search.js')}}"></script>
+        <script type="text/javascript" src="{{URL::asset('js/index.js')}}"></script>
 
     </head>
     <body>
-         <div id="wrapper">
+       <h>This is Yingxi and Jingyun 's DB project</h></body></br>
+       
+        <div id="wrapper">
             <!-- Navigation -->
             @include('includes.nav')
             <div id="page-wrapper">
-               <div class="row" style=" position:absolute; top:0px; width:100%; height:100%; background:white;"></div>
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                            <img class="img-fluid" src="img/icon.png" alt="">
-                            Monster <small>music</small>
+                            <div>Welcome <span id="uname"><small>{{Session::get('uname')}}</small></span></p><div>
                             </h1>
                         </div>
                     </div>
                     <!-- /.row -->
-                   
-                    <div class="container">
-                         <form enctype="multipart/form-data" id="createForm" action="{{url('search')}}" method="POST"><input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                            <div class="input-group" >  
-                            <input id = "search" type="submit" value="Search">                      
-                            
-                            </input>
-                            <input id="keyword" name="keyword"  type="text" placeholder="Search for an Artist, Song, Album or Playlist" class="form-control input-lg">
+                    <!-- /.row -->
+                    <div class="row">
+                        <!-- blue-->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <div class="middle">Date Today</div>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge"><span id="date"></span></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
-                        </form>
+                        </div>
+                        <!-- green-->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-green">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <div class="middle">{{ $trackNumber }} total</div>
+                                            <!-- <i class="fa fa-tasks fa-5x"></i>  -->
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">Track</div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        <!-- yellow-->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-yellow">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <div class="middle">{{ $plNumber }} total</div>
+                                            <!-- <i class="fa fa-shopping-cart fa-5x"></i> -->
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">Playlist</div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        <!-- red-->
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <div class="middle">{{ $albumNumber }} total</div>
+                                            <!--<i class="fa fa-support fa-5x"></i> -->
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">Album</div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
                     </div>
                     <!-- /.row -->
                     <div class="row">
                         <div class="col-lg-12">
-                           <div class="col-lg-10" id="artist">
-                                <h2>Artist</h2>
-                                <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th width="5%"> </th>                                                
-                                                <th>Name</th>    
-                                                <th>Genre</th>
-                                                <th>Description</th>
-                                                <th>Button</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>                                                
-                                                <td>Jay Chou</td>   
-                                                <td>Jazz</td>
-                                                <td>Good Singer</td>
-                                                <td>
-                                                <a href=".html"><i class="fa fa-fw fa-user-plus"></i></a></td>                                         
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                           
-                            <div class="col-lg-10" id="track">
-                                <h2>Track</h2>
+                            <div class="col-lg-10">
+                                <h2>New Track</h2>
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
@@ -134,8 +168,8 @@
                             </div>
                             
                             
-                            <div class="col-lg-10" id="pl">
-                                <h2>Playlist</h2>
+                            <div class="col-lg-10">
+                                <h2>New Playlist</h2>
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
@@ -166,8 +200,8 @@
                             </div>
                             
                             
-                            <div class="col-lg-10" id="album">
-                                <h2>Album</h2>
+                            <div class="col-lg-10">
+                                <h2>New Album</h2>
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
@@ -206,12 +240,12 @@
             <!-- /#page-wrapper -->
         </div>
         <!-- /#wrapper -->
-        <!-- jQuery -->
-        <script src="js/jquery.js"></script>
-        <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
-    
+     
+     
+                        
+
     </body>
     <footer>
+        
     </footer>
 </html>

@@ -2,14 +2,23 @@
 <html lang="{{ app()->getLocale() }}">
     <head>
 
+        <title>Monster Music - Welcome</title>
+
         <!-- Styles -->
         <style>
- 
         </style>
+        <link rel="stylesheet" href="{{ URL::asset('css/vendor/bootstrap/css/bootstrap.min.css')}}" />
+        <link rel="stylesheet" href="{{ URL::asset('css/vendor/font-awesome/css/font-awesome.min.css')}}" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+         <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{{ URL::asset('css/agency.min.css')}}" />
 
         <!-- js -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript" src="{{URL::asset('js/login.js')}}"></script>
+
 
     </head>
     <body>
@@ -40,5 +49,7 @@
                 </table>
             </form> 
         </div>
-    </div>
+
+
+    </body>
 </html>

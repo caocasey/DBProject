@@ -43,7 +43,7 @@ class UsersController extends Controller
 		else{
 			$encryptPassword = md5($upassword);
 			DB::insert('insert into users(uname,urname,upassword, usex, uemail, dbirth, country, state, city, zip, uphone) values (?,?,?,?,?,?,?,?,?,?,?)',[$uname,$urname,$encryptPassword,$usex,$uemail,$dbirth,$country,$state,$city,$zip,$uphone]);
-			return view('welcome');
+			return redirect('index');
 		}
 		
 		
@@ -70,14 +70,14 @@ class UsersController extends Controller
 		$uname = DB::select('select uname from users where uname = ? and upassword = ?',[$uname, $encryptPassword]);
 		Session::put('uname', $uname[0]->uname);
 
-		return redirect('.');
+		return redirect('index');
 		//return view('welcome');
 	}
 
 	public function logout(){
 
 		Session::put('uname', '');
-		return view('succLogout');
+		return view('welcome');
 
 	}
 
