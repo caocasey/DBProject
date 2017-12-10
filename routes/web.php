@@ -22,6 +22,8 @@ Route::get('/createPlaylist', function () {
     return view('createPlaylist');
 });
 Route::any('create_Playlist', 'PlaylistController@createPlaylist');
+Route::any('addtoplaylist/{tid}', 'PlaylistController@addTrack');
+Route::any('adding', 'PlaylistController@adding');
 
 Route::any('playlist/{pid}', 'PlaylistController@list');
 Route::any('playlist/follow/{uname}', 'UsersController@follow');

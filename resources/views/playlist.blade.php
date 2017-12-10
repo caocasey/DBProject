@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="{{ URL::asset('css/style.css')}}" />
         <!-- js -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript" src="{{URL::asset('js/login.js')}}"></script>
+        <script type="text/javascript" src="{{URL::asset('js/playlist.js')}}"></script>
 
     </head>
     <body>
@@ -73,22 +73,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach ($tracks as $t)
                                             <tr>
-                                                <td>1</td>                                                
-                                                <td>Listen to Your Mom</td>                                                
-                                                <td>Jay Chou</td>
-                                                <td>Jazz</td>
-                                                <td>03:20</td>
-                                                <td><a href=""><i class="fa fa-fw fa-play"></i></a> </td>                                   
+                                                <td> </td>                                                
+                                                <td>{{$t->ttitle}}</td>                                                
+                                                <td>{{$t->artistname}}</td>
+                                                <td>{{$t->tgenre}}</td>
+                                                <td>{{$t->duration}}</td>
+                                                <td><a class="playtrack" sectionId="{{$t->tid}}"><i class="fa fa-fw fa-play"></i></a> </td>                                   
                                             </tr>
-                                            <tr>
-                                                <td>2</td>                                                
-                                                <td>Simple Love</td>                                                
-                                                <td>Jay Chou</td>
-                                                <td>Pop</td>
-                                                <td>04:02</td>
-                                                <td class="hover"><a href=""><i class="fa fa-fw fa-pause"></i></a></td>                               
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

@@ -133,7 +133,7 @@
                                         <thead>
                                             <tr>
                                                 <th> </th>                                                
-                                                <th>Track</th>                                                
+                                                <th>Title</th>                                                
                                                 <th>Artist</th>
                                                 <th>Genre</th>
                                                 <th>Time</th>
@@ -149,7 +149,7 @@
                                                 <td>{{ $t->tgenre }}</td>
                                                 <td>{{ $t->duration }}</td>
                                                 <td><a class="playtrack" sectionId="{{$t->tid}}"><i class="fa fa-fw fa-play"></i></a>
-                                                <a href=".html"><i class="fa fa-fw fa-plus"></i></a>
+                                                <a class="addtrack" sectionId="{{$t->tid}}"><i class="fa fa-fw fa-plus"></i></a>
                                                 <a class="ratetrack" sectionId="{{$t->tid}}"><i class="fa fa-fw fa-star"></i></a>
                                                 </td>                                         
                                             </tr>
@@ -167,7 +167,7 @@
                                         <thead>
                                             <tr>
                                                 <th width="5%"> </th>
-                                                <th width="24%">Playlist</th>                                                
+                                                <th width="24%">Title</th>                                                
                                                 <th width="9%">Listened</th>                                                
                                                 <th width="14%">Creator</th>
                                                 <th width="17%">Time</th>
@@ -201,7 +201,7 @@
                                         <thead>
                                             <tr>
                                                 <th width="5%"> </th>
-                                                <th width="24%">Playlist</th>                                                
+                                                <th width="24%">Title</th>                                                
                                                 <th width="9%">Listened</th>                                                
                                                 <th width="14%">Artist</th>
                                                 <th width="17%">Time</th>

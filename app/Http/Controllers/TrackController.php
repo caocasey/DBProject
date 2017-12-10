@@ -63,8 +63,10 @@ class TrackController extends Controller
 
 		// playlist
 		$displayPlaylist = DB::select("select * from playlist order by pldate DESC limit 5");
+		$number = DB::select("select alid , count(apdate) from albumrecord Group by alid");
+		
 
-        return view('index',compact('data','displayTrack','displayAlbum','displayPlaylist') );
+        return view('index',compact('data','displayTrack','displayAlbum','displayPlaylist','number') );
 
 		
 	}

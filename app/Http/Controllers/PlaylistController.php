@@ -35,7 +35,8 @@ class PlaylistController extends Controller
 		$pid = $ans->pid;
 
 		$pl = DB::select("Select * from playlist where pid=?",[$pid]);
-		return view('playlist',compact('pl'));	
+		$tracks = DB::select("Select * from playlistTrack p join track t on p.tid=t.tid where pid=?",[$pid]);
+		return view('playlist',compact('pl','tracks'));	
 	}
 
 	public function playlistplay(Request $ans){
@@ -45,6 +46,34 @@ class PlaylistController extends Controller
 
 		
 	}
+
+	public function addTrack(Request $ans){
+
+		$tid = $ans->tid;
+		Session::put('addtid', $tid);
+		
+		$uname =  Session::get('uname');
+		$data = DB::select("Select * from playlist where uname=?",[$uname]);
+
+        return view('addtoplaylist',compact('tid', 'data'));
+
+		
+	}
+
+	public function adding(Request $ans){
+
+		$pid = $ans->input('adding');
+		$tid =  Session::get('addtid');
+
+		//insert track to playlist
+		DB::insert('insert into playlistTrack(pid,tid) values (?,?)',[$pid,$tid]);
+			
+		$url = "playlist/".$pid;
+        return redirect($url);
+
+		
+	}
+
 
 
 

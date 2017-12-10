@@ -44,6 +44,13 @@ $(document).ready(function(){
 			$(location).attr('href',url);
 		
 		});
+		$('.addtrack').click(function(e) {
+			
+			var url = "addtoplaylist/" + $(this).attr('sectionId');
+			//alert(url);
+			$(location).attr('href',url);
+		
+		});
 		$('.detailplaylist').click(function(e) {
 			
 			var url = "playlist/" + $(this).attr('sectionId');
