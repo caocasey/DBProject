@@ -89,6 +89,7 @@
                                                 <td>{{$a->adescription}}</td>
                                                 <td>
                                                     <a href=".html"><i class="fa fa-fw fa-user-plus"></i></a>
+                                                    <a class="searchartist" sectionId="{{$a->aid}}"><i class="fas fa-address-card"></i></a>
                                                 </td>                                         
                                             </tr>
                                         </tbody>

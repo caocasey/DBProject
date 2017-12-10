@@ -2,7 +2,6 @@ $(document).ready(function(){
 
 	//check all required information not NULL
     $('#signup').click(function() {
-
 		var uname=$("#uname").val();
 		var urname=$("#urname").val(); 
 		var password1=$("#password1").val(); 

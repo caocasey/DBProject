@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 /**
 * 
 */
@@ -14,12 +15,14 @@ class ArtistController extends Controller
 		
 		$lists = DB::select('Select aid, aname, atype, adescription from artist where aid = ?',[$aid]);
 		$aname = $lists[0]->aname; 
-		
+		$aid = $lists[0]->aid; 
 		//get all the album list by select artist
-		$albumlists = DB::select('Select alid from track where artistname = ?',[$aname]);
+		$tracklists = DB::select('Select * from track where artistname = ?',[$aname]);
 
+		$tracknum = DB::select('Select count(*) as ct from track where artistname = ?',[$aname]);
+		$tracknum = $tracknum[0]->ct;
 
-		return view('artist',compact('lists', 'albumlists'));	
+		return view('artist',compact('aid','aname','tracknum','lists', 'tracklists'));	
 
 
 	}
@@ -52,6 +55,29 @@ class ArtistController extends Controller
 		$commonFuns = DB::select('Select a1.aid as artist1, a2.aid as artist2 From (select * from artist natural join likes ) as a1, (select * from artist natural join likes ) as a2 Where a1.aid < a2.aid and a1.uname = a2.uname Group by a1.aid, a2.aid Having count(a1.uname) >= ((Select count(uname) From likes Where aid = a1.aid)+(Select count(uname) From likes Where aid = a2.aid)-count(a1.uname))/2');
 		dd($commonFuns);
 		//return view('',compact('commonFuns'));		
+	}
+
+	public function like(Request $aid){
+
+		$uname =  Session::get('uname');
+		$aid = $aid->aid;
+		DB::insert('insert into likes(uname,aid,ltime) values (?,?,?)',[$uname,$aid,now()]);
+
+		$url = "artist/info/".$aid;
+		return redirect($url);
+
+	}
+
+	public function unlike(Request $aid){
+		
+		$uname =  Session::get('uname');
+		$aid =  $aid->aid;
+
+		
+		DB::delete('delete from likes where uname= ? and aid=?',[$uname,$aid]);
+		
+		$url = "artist/info/".$aid;
+		return redirect($url);
 	}
 }
 

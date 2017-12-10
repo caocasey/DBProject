@@ -41,7 +41,7 @@
                             <input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off">
                         </div>
                         <div class="form-group">
-                            <p>Not registered? <a href={{url('users/sign_up')}}>Sign Up</a> | <a href="forgot.html">Forgot Password?</a></p>
+                            <p>Not registered? <a href={{url('users/sign_up')}}>Sign Up</a> | <a href={{url('forgot')}}>Forgot Password?</a></p>
                         </div>
                         <div class="form-group">
                             <input id="login" type="submit" value="Log In" class="btn btn-info btn-lg btn-block">

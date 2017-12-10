@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use Cookie;
 
 
 /**
@@ -67,6 +68,46 @@ class TrackController extends Controller
 
 		
 	}
+
+	public function trackplay(Request $ans){
+
+		$tid = $ans->tid;
+		$uname =  Session::get('uname');
+
+		//record played track
+		DB::insert('insert into playrecord(uname, tid, ptime) values (?,?,?)',[$uname,$tid,now()]);
+
+        return view('trackplay',compact('tid'));
+
+		
+	}
+
+	public function prerate(Request $ans){
+		
+		$tid = $ans->tid;
+		Session::put('tid', $tid);
+
+        return view('rate');
+		
+	}
+
+
+	public function rate(Request $ans){
+		
+		$tid = Session::get('tid');
+		$uname =  Session::get('uname');
+		$star = $ans->input('star');
+
+		DB::insert('insert into rate(uname, tid, star, rtime) values (?,?,?,?)',[$uname,$tid,$star,now()]);
+		
+
+			
+        return redirect('index');
+
+		
+	}
+
+	
 
 
 }

@@ -23,10 +23,9 @@
         <!-- js -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript" src="{{URL::asset('js/index.js')}}"></script>
-
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     </head>
     <body>
-       <h>This is Yingxi and Jingyun 's DB project</h></body></br>
        
         <div id="wrapper">
             <!-- Navigation -->
@@ -145,12 +144,14 @@
                                             @foreach ($displayTrack as $t)
                                             <tr>
                                                 <td> </td>                                                
-                                                <td>{{ $t->ttitle }}</td>                                 <td>{{ $t->artistname }}</td>
+                                                <td>{{ $t->ttitle }}</td>                                 
+                                                <td>{{ $t->artistname }}</td>
                                                 <td>{{ $t->tgenre }}</td>
                                                 <td>{{ $t->duration }}</td>
-                                                <td><a href=".html"><i class="fa fa-fw fa-play"></i></a>
-                                                <a href=".html"><i class="fa fa-fw fa-heart"></i></a>
-                                                <a href=".html"><i class="fa fa-fw fa-user-times"></i></a></td>                                         
+                                                <td><a class="playtrack" sectionId="{{$t->tid}}"><i class="fa fa-fw fa-play"></i></a>
+                                                <a href=".html"><i class="fa fa-fw fa-plus"></i></a>
+                                                <a class="ratetrack" sectionId="{{$t->tid}}"><i class="fa fa-fw fa-star"></i></a>
+                                                </td>                                         
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -178,13 +179,13 @@
                                             @foreach ($displayPlaylist as $p)
                                             <tr>
                                                 <td> </td>
-                                                <td>{{ $p->pname }}</td>
+                                                <td>{{ $p->ptitle }}</td>
                                                 <td>XXX</td>
-                                                <td>{{ $t->uname }}</td>
-                                                <td>{{ $t->pldate }}</td>
-                                                <td><a href=".html"><i class="fa fa-fw fa-play"></i></a>
-                                                <a href=".html"><i class="fa fa-fw fa-heart"></i></a>
-                                                <a href=".html"><i class="fa fa-fw fa-user-times"></i></a></td>
+                                                <td>{{ $p->uname }}</td>
+                                                <td>{{ $p->pldate }}</td>
+                                                <td><a  class="playplaylist" sectionId="{{$p->pid}}"><i class="fa fa-fw fa-play"></i></a>
+                                                <a class="detailplaylist" sectionId="{{$p->pid}}"><i class="fas fa-address-card"></i></a>
+                                                </td>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -215,9 +216,8 @@
                                                 <td>XXX</td>
                                                 <td>XXX</td>
                                                 <td>{{ $al->aldate }}</td>
-                                                <td><a href=".html"><i class="fa fa-fw fa-play"></i></a>
-                                                <a href=".html"><i class="fa fa-fw fa-heart"></i></a>
-                                                <a href=".html"><i class="fa fa-fw fa-user-times"></i></a></td>
+                                                <td><a class="playalbum" sectionId="{{$al->alid}}"><i class="fa fa-fw fa-play"></i></a>
+                                                </td>
                                             </tr>
                                             @endforeach
                                         </tbody>

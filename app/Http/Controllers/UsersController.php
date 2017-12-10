@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
-
+use Mail;
 /**
 * 
 */
@@ -133,7 +133,7 @@ class UsersController extends Controller
 
 	}
 
-	public function follow(){
+	/*public function follow(){
 
 		//follow
 		$uname1 =  Session::get('uname');
@@ -141,7 +141,7 @@ class UsersController extends Controller
 		DB::insert('insert into follow(uname,followerName,ftime) values (?,?,?)',[$uname2,$uname1,now()]);
 		
 		//return view('',compact('followlist'));		
-	}
+	}*/
 
 	public function likes(){
 
@@ -153,7 +153,61 @@ class UsersController extends Controller
 
 	}
 	
-	
+	public function forgot(Request $femail){
+
+		$uemail = $femail->input('femail');
+		/*$uname = "Dear";
+		$title = "Reset your password";
+		$message = "Hi, thank you for your support, please contact admin.";
+
+		Mail::send('welcome', ['title' => $title, 'message' => $message], function ($message) use($uemail)
+		{
+		    $message->from('yingxi.cao@nyu.edu', 'music');
+		    $message->to($uemail);
+		});*/
+		//dd($uemail);
+		return view('email',compact('uemail'));		
+
+	}
+
+	//get user's persionalize information
+	public function mymusic(){
+
+		$uname =  Session::get('uname');
+
+		$artistlike = DB::select('select * from likes natural join artist where uname=?',[$uname]);
+		$playlist = DB::select('select * from playlist where uname=?',[$uname]);
+		$tracks = DB::select('select * from track where tid IN (select tid from playrecord where uname=?)',[$uname]);
+		$albums = DB::select('select * from album where alid IN (select alid from albumrecord where uname=?)',[$uname]);
+
+
+		return view('mymusic',compact('artistlike','playlist','tracks','albums'));		
+
+
+	}
+
+
+	public function follow(Request $uname){
+
+		
+		$uname1 = $uname->uname;
+		$followername =  Session::get('uname');
+
+		DB::insert('insert into follow(uname,followerName,ftime) values (?,?,?)',[$uname1,$followername,now()]);
+
+		return back();
+	}
+
+	public function unfollow(Request $uname){
+		
+		$uname1 = $uname->uname;
+		$followername =  Session::get('uname');
+
+		
+		DB::delete('delete from follow where uname= ? and followerName=?',[$uname1,$followername]);
+		
+		return back();
+	}
 
 
 

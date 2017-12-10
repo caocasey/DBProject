@@ -13,7 +13,7 @@
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
         <li class="dropdown">
-            <a href="search.html"><i class="fa fa-search"></i></a>
+            <a href={{ url('search') }}><i class="fa fa-search"></i></a>
         </li>
         <li class="dropdown">
             <a href="logout"><i class="fa fa-fw fa-power-off"></i>Log Out</a>
@@ -32,7 +32,7 @@
                 <a href="{{ url('users/account') }}"><i class="fa fa-fw fa-edit"></i> Profile</a>
             </li>
             <li>
-                <a href="mymusic.html"><i class="fa fa-fw fa-music"></i> My music</a>
+                <a href="{{ url('mymusic') }}"><i class="fa fa-fw fa-music"></i> My music</a>
             </li>
             <li>
                 <a href="{{ url('logout') }}"><i class="fa fa-fw fa-sign-out-alt"></i> Sign out</a>

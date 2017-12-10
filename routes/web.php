@@ -17,6 +17,15 @@ Route::get('/', function () {
 Route::get('/index', function () {
     return view('index');
 });
+Route::any('mymusic', 'UsersController@mymusic');
+Route::get('/createPlaylist', function () {
+    return view('createPlaylist');
+});
+Route::any('create_Playlist', 'PlaylistController@createPlaylist');
+
+Route::any('playlist/{pid}', 'PlaylistController@list');
+Route::any('playlist/follow/{uname}', 'UsersController@follow');
+Route::any('playlist/unfollow/{uname}', 'UsersController@unfollow');
 
 //artist related routers
 Route::any('artist/info/{aid}', 'ArtistController@info');
@@ -37,6 +46,11 @@ Route::any('users/login', function () {
 Route::any('users/log_in', 'UsersController@login');
 Route::any('/logout', 'UsersController@logout');
 
+Route::any('forgot', function () {
+    return view('forgot');
+});
+Route::any('users/forgot', 'UsersController@forgot');
+
 Route::any('users/rate', 'UsersController@rate');
 Route::get('users/find_playlist', 'UsersController@findPlaylist');
 Route::any('users/likes', 'UsersController@likes');
@@ -46,6 +60,14 @@ Route::any('users/follow', 'UsersController@follow');
 Route::any('search', 'TrackController@search');
 Route::get('index', 'TrackController@numbers');
 
+Route::any('trackplay/{tid}', 'TrackController@trackplay');
+Route::any('albumplay/{alid}', 'AlbumController@albumplay');
+Route::any('playlistplay/{pid}', 'PlaylistController@playlistplay');
+Route::any('rate/{tid}', 'TrackController@prerate');
+Route::any('tracks/rate', 'TrackController@rate');
 
+
+Route::any('artist/like/{aid}', 'ArtistController@like');
+Route::any('artist/unlike/{aid}', 'ArtistController@unlike');
 
 
