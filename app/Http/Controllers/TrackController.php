@@ -33,7 +33,7 @@ class TrackController extends Controller
 		$searchAlbum = DB::select("Select * from album Where altitle LIKE '%{$keyword}%'");
 
 		//search playlist
-		$searchPlaylist = DB::select("Select * from playlist Where ptitle LIKE '%{$keyword}%'");
+		$searchPlaylist = DB::select("Select * from playlist Where private=0 and ptitle LIKE '%{$keyword}%'");
 
 
 
@@ -59,10 +59,10 @@ class TrackController extends Controller
 		$displayTrack = DB::select("select * from track order by tid DESC limit 5");
 
 		// album
-		$displayAlbum = DB::select("select * from album order by aldate DESC limit 5");
+		$displayAlbum = DB::select("select a.alid,a.altitle,a.aldate,t.artistname,count(distinct ar.apdate) as ct from album a left join albumrecord ar on a.alid = ar.alid join albumTrack ac on ac.alid = a.alid join track t on t.tid=ac.tid Group by a.alid ORDER BY `ct` desc limit 5");
 
 		// playlist
-		$displayPlaylist = DB::select("select * from playlist order by pldate DESC limit 5");
+		$displayPlaylist = DB::select("select * from playlist where private=0 order by pldate DESC limit 5");
 		$number = DB::select("select alid , count(apdate) from albumrecord Group by alid");
 		
 

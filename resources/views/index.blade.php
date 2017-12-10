@@ -167,8 +167,7 @@
                                         <thead>
                                             <tr>
                                                 <th width="5%"> </th>
-                                                <th width="24%">Title</th>                                                
-                                                <th width="9%">Listened</th>                                                
+                                                <th width="24%">Title</th>            
                                                 <th width="14%">Creator</th>
                                                 <th width="17%">Time</th>
                                                 <th width="14%">Button</th>
@@ -180,7 +179,6 @@
                                             <tr>
                                                 <td> </td>
                                                 <td>{{ $p->ptitle }}</td>
-                                                <td>XXX</td>
                                                 <td>{{ $p->uname }}</td>
                                                 <td>{{ $p->pldate }}</td>
                                                 <td><a  class="playplaylist" sectionId="{{$p->pid}}"><i class="fa fa-fw fa-play"></i></a>
@@ -213,8 +211,8 @@
                                             <tr>
                                                 <td> </td>
                                                 <td>{{ $al->altitle }}</td>
-                                                <td>XXX</td>
-                                                <td>XXX</td>
+                                                <td>{{ $al->ct }}</td>
+                                                <td>{{ $al->artistname }}</td>
                                                 <td>{{ $al->aldate }}</td>
                                                 <td><a class="playalbum" sectionId="{{$al->alid}}"><i class="fa fa-fw fa-play"></i></a>
                                                 </td>

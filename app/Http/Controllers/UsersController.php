@@ -81,8 +81,8 @@ class UsersController extends Controller
 
 	}
 
-
-	public function rate(){
+//task for project1
+	/*public function rate(){
 		
 		//Insert a new rating given by a user for a track.
 		//get information from html form 
@@ -121,7 +121,7 @@ class UsersController extends Controller
 
 		dd($findPlaylist);
 		//return view('',compact('findPlaylist'));		
-	}
+	}*/
 
 	//list user information
 	public function info(){
@@ -142,7 +142,7 @@ class UsersController extends Controller
 		
 		//return view('',compact('followlist'));		
 	}*/
-
+/*for project1 
 	public function likes(){
 
 		//like
@@ -151,7 +151,7 @@ class UsersController extends Controller
 		DB::insert('insert into likes(uname,aid,ltime) values (?,?,?)',[$uname,$aid,now()]);	
 		//return view('',compact('followlist'));		
 
-	}
+	}*/
 	
 	public function forgot(Request $femail){
 
@@ -179,6 +179,7 @@ class UsersController extends Controller
 		$playlist = DB::select('select * from playlist where uname=?',[$uname]);
 		$tracks = DB::select('select * from track where tid IN (select tid from playrecord where uname=?)',[$uname]);
 		$albums = DB::select('select * from album where alid IN (select alid from albumrecord where uname=?)',[$uname]);
+		/*$albums1 = DB::select("select a.alid,a.altitle,a.aldate,count(distinct ar.apdate) as ct from album a left join albumrecord ar on a.alid = ar.alid join albumTrack ac on ac.alid = a.alid where uname = ? Group by a.alid ORDER BY `ct` desc limit 5",[$uname]);*/
 
 
 		return view('mymusic',compact('artistlike','playlist','tracks','albums'));		

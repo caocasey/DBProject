@@ -56,7 +56,6 @@
                                             <tr>
                                                 <th width="5%"> </th>
                                                 <th width="24%">Playlist</th>                                                
-                                                <th width="9%">Listened</th>                                                
                                                 <th width="14%">Creator</th>
                                                 <th width="17%">Time</th>
                                                 <th width="14%">Button</th>
@@ -69,7 +68,6 @@
                                             <tr>
                                                 <td> </td>
                                                 <td>{{$d->ptitle}}</td>
-                                                <td>XXX</td>
                                                 <td>{{$d->uname}}</td>
                                                 <td>{{$d->pldate}}</td>
                                                 <td><button name = "adding" type="submit" id = "adding" value="{{ $d->pid }}" class="btn btn-info  btn-xs"><i class="fa fa-fw fa-check"></i></button></td>

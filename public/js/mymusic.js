@@ -10,6 +10,13 @@ $(document).ready(function(){
 		});
 
 		
+		$('.searchartist').click(function(e) {
+			
+			var url = "artist/info/" + $(this).attr('sectionId');
+			//alert(url);
+			$(location).attr('href',url);
+		
+		});
 
 		$('.ratetrack').click(function(e) {
 			
@@ -32,6 +39,14 @@ $(document).ready(function(){
 		$('.playalbum').click(function(e) {
 			
 			var url = "albumplay/" + $(this).attr('sectionId');
+			//alert(url);
+			$(location).attr('href',url);
+		
+		});
+
+		$('.addtrack').click(function(e) {
+			
+			var url = "addtoplaylist/" + $(this).attr('sectionId');
 			//alert(url);
 			$(location).attr('href',url);
 		

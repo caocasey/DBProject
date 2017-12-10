@@ -29,11 +29,12 @@ class ArtistController extends Controller
 
 
 	//For each artist, list their ID, name, and how many times their tracks have been played by users
+	/*project 1 query
 	public function list(){
 		$lists = DB::select('Select a.aid, a.aname, count(distinct ptime) From artist a left join track t on a.aid = t.aid left join playrecord pl on pl.tid = t.tid Group by a.aid, a.aname');
 		dd($lists);
 		//return view('',compact('lists'));		
-	}
+	}*/
 
 
 	//List all artists that are mainly playing a type of track
