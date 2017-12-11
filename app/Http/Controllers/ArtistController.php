@@ -59,7 +59,7 @@ class ArtistController extends Controller
 	}
 
 	public function like(Request $aid){
-
+		date_default_timezone_set('America/New_York');
 		$uname =  Session::get('uname');
 		$aid = $aid->aid;
 		DB::insert('insert into likes(uname,aid,ltime) values (?,?,?)',[$uname,$aid,now()]);

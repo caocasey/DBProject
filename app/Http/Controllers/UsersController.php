@@ -176,20 +176,33 @@ class UsersController extends Controller
 		$uname =  Session::get('uname');
 
 		$artistlike = DB::select('select * from likes natural join artist where uname=?',[$uname]);
+
 		$playlist = DB::select('select * from playlist where uname=?',[$uname]);
+		$follow = DB::select('select uname from follow where followerName=?',[$uname]);
+		//append followplaylist to playlist
+		if(!empty($follow)){
+			$followplaylist = DB::select('select * from playlist where private=0 and uname=?',[$follow[0]->uname]);
+			$totalPlaylist = array_merge($playlist, $followplaylist);
+		}else
+		$totalPlaylist = $playlist;
+		
+		
+
+
 		$tracks = DB::select('select * from track where tid IN (select tid from playrecord where uname=?)',[$uname]);
 		$albums = DB::select('select * from album where alid IN (select alid from albumrecord where uname=?)',[$uname]);
 		/*$albums1 = DB::select("select a.alid,a.altitle,a.aldate,count(distinct ar.apdate) as ct from album a left join albumrecord ar on a.alid = ar.alid join albumTrack ac on ac.alid = a.alid where uname = ? Group by a.alid ORDER BY `ct` desc limit 5",[$uname]);*/
 
 
-		return view('mymusic',compact('artistlike','playlist','tracks','albums'));		
+		return view('mymusic',compact('artistlike','totalPlaylist','tracks','albums'));		
 
 
 	}
 
 
 	public function follow(Request $uname){
-
+		
+		date_default_timezone_set('America/New_York');
 		
 		$uname1 = $uname->uname;
 		$followername =  Session::get('uname');

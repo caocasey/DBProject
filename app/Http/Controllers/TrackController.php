@@ -30,7 +30,8 @@ class TrackController extends Controller
 		$searchArtist = DB::select("Select a.aid, a.aname, a.atype, a.adescription from artist a Where a.aname LIKE '%{$keyword}%'");
 
 		//search album
-		$searchAlbum = DB::select("Select * from album Where altitle LIKE '%{$keyword}%'");
+		//$searchAlbum = DB::select("Select * from album Where altitle LIKE '%{$keyword}%'");
+		$searchAlbum = DB::select("select a.alid,a.altitle,a.aldate,t.artistname,count(distinct ar.apdate) as ct from album a left join albumrecord ar on a.alid = ar.alid join albumTrack ac on ac.alid = a.alid join track t on t.tid=ac.tid Where altitle LIKE '%{$keyword}%' Group by a.alid ORDER BY `ct`");
 
 		//search playlist
 		$searchPlaylist = DB::select("Select * from playlist Where private=0 and ptitle LIKE '%{$keyword}%'");
@@ -72,7 +73,7 @@ class TrackController extends Controller
 	}
 
 	public function trackplay(Request $ans){
-
+		date_default_timezone_set('America/New_York');
 		$tid = $ans->tid;
 		$uname =  Session::get('uname');
 
@@ -95,7 +96,7 @@ class TrackController extends Controller
 
 
 	public function rate(Request $ans){
-		
+		date_default_timezone_set('America/New_York');
 		$tid = Session::get('tid');
 		$uname =  Session::get('uname');
 		$star = $ans->input('star');

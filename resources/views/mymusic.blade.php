@@ -37,7 +37,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                            <img class="img-fluid" src="img/icon.png" alt="">
+                            <img class="img-fluid" src="{{ URL::asset('images/icon.png')}}" alt="">
                             {{Session::get('uname')}}
                             <small><a href="{{url('createPlaylist')}}">New Playlist</a></small>
                             <small><a href="{{url('createPlaylist')}}"><i class="fa fa-fw fa-plus"></i></a> </small>
@@ -210,7 +210,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($playlist as $p)
+                                            @foreach($totalPlaylist as $p)
                                             <tr>
                                                 <td> </td>
                                                 <td>{{ $p->ptitle }}</td>

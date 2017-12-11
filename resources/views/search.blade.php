@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <h1 class="page-header">
-                            <img class="img-fluid" src="img/icon.png" alt="">
+                            <img class="img-fluid" src="{{ URL::asset('images/icon.png')}}" alt="">
                             Monster <small>music</small>
                             </h1>
                         </div>
@@ -140,9 +140,7 @@
                                         <thead>
                                             <tr>
                                                 <th width="5%"> </th>
-                                                <th width="24%">Playlist</th>                                                
-                                                <th width="9%">Listened</th>                                                
-                                                <th width="14%">Creator</th>
+                                                <th width="24%">Playlist</th>                                        <th width="14%">Creator</th>
                                                 <th width="17%">Time</th>
                                                 <th width="14%">Button</th>
                                                 
@@ -154,7 +152,6 @@
                                             <tr>
                                                 <td>  </td>
                                                 <td>{{ $p->ptitle }}</td>
-                                                <td>XXX</td>
                                                 <td>{{ $p->uname }}</td>
                                                 <td>{{ $p->pldate }}</td>
                                                 <td><a  class="playplaylist" sectionId="{{$p->pid}}"><i class="fa fa-fw fa-play"></i></a>
@@ -189,8 +186,8 @@
                                             <tr>
                                                 <td>  </td>
                                                 <td>{{ $al->altitle }}</td>
-                                                <td>XXX</td>
-                                                <td>XXX</td>
+                                                <td>{{ $al->ct }}</td>
+                                                <td>{{ $al->artistname }}</td>
                                                 <td>{{ $al->aldate }}</td>
                                                 <td><a class="playalbum" sectionId="{{$al->alid}}"><i class="fa fa-fw fa-play"></i></a>
                                                 </td>

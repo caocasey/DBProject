@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Session;
 class PlaylistController extends Controller
 {
 	public function createPlaylist(Request $request){
+		date_default_timezone_set('America/New_York');
 		
 		$uname =  Session::get('uname');
 		$plname = $request->input('plname');

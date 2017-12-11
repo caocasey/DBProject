@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="mymusic.html">Monster music</a>
+        <a class="navbar-brand" href="{{ url('index') }}">Monster music</a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
